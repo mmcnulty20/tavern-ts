@@ -1,0 +1,17 @@
+diff --git a/node_modules/@types/mongoose-unique-validator/index.d.ts b/node_modules/@types/mongoose-unique-validator/index.d.ts
+index 493e860..7f0ce58 100644
+--- a/node_modules/@types/mongoose-unique-validator/index.d.ts
++++ b/node_modules/@types/mongoose-unique-validator/index.d.ts
+@@ -5,10 +5,11 @@
+ // Minimum TypeScript Version: 3.2
+ 
+ import { Schema } from "mongoose";
++import { UserSchema } from "../../../backendTypes/dbTypes";
+ 
+ export = mongooseUniqueValidator;
+ 
+-declare function mongooseUniqueValidator(schema: Schema, options?: any): void;
++declare function mongooseUniqueValidator(schema: Schema | UserSchema, options?: any): void;
+ 
+ declare namespace mongooseUniqueValidator {
+ }

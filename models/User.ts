@@ -27,35 +27,3 @@ const UserSchema = new Schema< UserDocument, UserModel >(
 UserSchema.plugin(uniqueValidator);
 
 export default model<UserDocument, UserModel>("User", UserSchema)
-
-
-/*
-Argument of type 
-'(schema: Schema<Document<any, {}>, Model<any, any>, undefined>, options?: any) => void' 
-is not assignable to parameter of type 
-'(schema: Schema<UserDocument, Model<UserDocument, {}>, undefined>, opts?: any) => void'.
-Types of parameters 'schema' and 'schema' are incompatible.
-
-
-Type 
-'Schema<UserDocument, Model<UserDocument, {}>, undefined>' 
-is not assignable to type 
-'Schema<Document<any, {}>, Model<any, any>, undefined>'.
-
-Types of property 'methods' are incompatible.
-
-Type 
-'{ [name: string]: (this: UserDocument, ...args: any[]) => any; }'
-is not assignable to type 
-'{ [name: string]: (this: Document<any, {}>, ...args: any[]) => any; }'.
-Index signatures are incompatible.
-    
-Type 
-'(this: UserDocument, ...args: any[]) => any'
-is not assignable to type 
-'(this: Document<any, {}>, ...args: any[]) => any'.
-        
-The 'this' types of each signature are incompatible.
-Type 'Document<any, {}>' is not assignable to type 'UserDocument'.ts(
-
-*/

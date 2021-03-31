@@ -18,3 +18,36 @@ export interface UserModel extends Model<UserDocument> {
 
 export interface UserSchema extends Schema<UserDocument, UserModel> {}
 // Also consider virtual for returning CSS string for color?
+
+
+//Validation types
+
+export interface userInput {
+    username: string
+    password: string
+}
+
+export interface validationErrorsObj {
+    username?: string
+    password?: string
+}
+
+export interface validationOutput {
+    errors: validationErrorsObj
+    isValid: boolean
+}
+
+export interface signupInput extends userInput {
+    displayName: string
+    confirmPassword: string
+}
+
+export interface signupErrorsObj extends validationErrorsObj {
+    displayName?: string
+    confirmPassword?: string
+}
+
+export interface signupValidationOutput {
+    errors: signupErrorsObj
+    isValid: boolean
+}

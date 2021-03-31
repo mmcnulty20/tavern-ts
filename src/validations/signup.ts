@@ -4,7 +4,7 @@ import validText from "./validText";
 
 const validateSignupInput = (arg: signupInput): signupValidationOutput => {
     const errors: signupErrorsObj = {}
-    Object.keys(arg).forEach( k => arg[k] = validText(arg[k]) )
+    Object.keys(arg).forEach( k => arg[k as keyof signupInput] = validText(arg[k as keyof signupInput]) )
     const { username, password, displayName, confirmPassword } = arg
 
     // Username validations

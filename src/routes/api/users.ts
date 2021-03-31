@@ -47,7 +47,7 @@ router.post("/signup", ({body}, res) => {
     const newUser = new User(userInput)
 
     bcrypt.genSalt(10, ( genErr, salt ) => {
-        bcrypt.hash( newUser.password, salt, ( err, hash ) => {
+        bcrypt.hash( userInput.password, salt, ( err, hash ) => {
             if ( err ) throw err
             // set password to secure hashed pass instead of raw string
             newUser.password = hash

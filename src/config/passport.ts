@@ -1,6 +1,7 @@
 import { Strategy, ExtractJwt, StrategyOptions, VerifiedCallback, VerifyCallback } from "passport-jwt";
 import mongoose from "mongoose";
-const User = mongoose.model('User');
+import User from "../models/User";
+// const User = mongoose.model('User');
 import { secretOrKey } from "./keys";
 const options:StrategyOptions = {
     secretOrKey,

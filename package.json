@@ -2,10 +2,10 @@
   "name": "thetavern",
   "version": "1.0.0",
   "description": "Fantasy-Tabletop-RPG-themed multiplayer game consisting of minigames.",
-  "main": "app.js",
+  "main": "src/app.ts",
   "scripts": {
-    "start": "node app.js",
-    "server": "nodemon app.js",
+    "start": "node src/app.ts",
+    "server": "ts-node-dev --respawn --transpile-only src/app.ts",
     "frontend-install": "npm install --prefix frontend",
     "frontend": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\""
@@ -31,6 +31,8 @@
     "@types/passport": "^1.0.6",
     "@types/passport-jwt": "^3.0.5",
     "@types/validator": "^13.1.3",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "ts-node-dev": "^1.1.6",
+    "typescript": "^4.2.3"
   }
 }

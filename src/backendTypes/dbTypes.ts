@@ -3,15 +3,19 @@ import { Document, Model, Schema } from "mongoose";
 interface UserProps {
     displayName: string
     username: string
-    password?: string
     // color: number //implement after base auth
+}
+
+export interface UserWithPassword extends UserProps {
+    password: string
 }
 
 export interface User extends Readonly<UserProps> {
     readonly id: number
+    password?: string
 }
 
-export interface UserDocument extends UserProps, Document {
+export interface UserDocument extends UserWithPassword, Document {
     // relations go here
 }
 

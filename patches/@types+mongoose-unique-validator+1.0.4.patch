@@ -6,7 +6,7 @@ index 493e860..7f0ce58 100644
  // Minimum TypeScript Version: 3.2
  
  import { Schema } from "mongoose";
-+import { UserSchema } from "../../../backendTypes/dbTypes";
++import { UserSchema } "../../../src/backendTypes/dbTypes";
  
  export = mongooseUniqueValidator;
  

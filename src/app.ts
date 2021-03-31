@@ -8,7 +8,6 @@ import passConfig from "./config/passport"
 const app = express();
 
 // Routes
-
 import userRoutes from "./routes/api/users"
 
 // Setup mongoose
@@ -21,7 +20,7 @@ mongoose
 // Setup server
 
 // Default server port to 5000 unless set by env
-const port:number = parseInt(process.env.PORT) || 5000;
+const port:number | string = process.env.PORT || 5000;
 
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())

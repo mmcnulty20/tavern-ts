@@ -1,3 +1,4 @@
 node_modules/
 
-config/keys.ts
+src/config/keys.ts
+dist/

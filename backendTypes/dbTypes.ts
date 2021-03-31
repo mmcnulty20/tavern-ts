@@ -1,13 +1,17 @@
 import { Document, Model, Schema } from "mongoose";
 
-export interface User {
+interface UserProps {
     displayName: string
     username: string
-    password: string
+    password?: string
     // color: number //implement after base auth
 }
 
-export interface UserDocument extends User, Document {
+export interface User extends Readonly<UserProps> {
+    readonly id: number
+}
+
+export interface UserDocument extends UserProps, Document {
     // relations go here
 }
 
@@ -27,10 +31,7 @@ export interface userInput {
     password: string
 }
 
-export interface validationErrorsObj {
-    username?: string
-    password?: string
-}
+export interface validationErrorsObj extends Partial<userInput> {}
 
 export interface validationOutput {
     errors: validationErrorsObj
@@ -42,10 +43,7 @@ export interface signupInput extends userInput {
     confirmPassword: string
 }
 
-export interface signupErrorsObj extends validationErrorsObj {
-    displayName?: string
-    confirmPassword?: string
-}
+export interface signupErrorsObj extends validationErrorsObj, Partial<signupInput> {}
 
 export interface signupValidationOutput {
     errors: signupErrorsObj

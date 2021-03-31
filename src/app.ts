@@ -22,7 +22,7 @@ mongoose
 // Default server port to 5000 unless set by env
 const port:number | string = process.env.PORT || 5000;
 
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(passport.initialize())
 

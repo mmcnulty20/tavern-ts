@@ -29,10 +29,9 @@ router.get("/current",
 
 
 // Create new account
-router.post("/signup", ({body}, res) => {
+router.post("/signup", ({ body: { user } }, res) => {
     // set display name to username if no display name provided
-    const userInput: signupInput = {...body, displayName: body.displayName || body.username }
-
+    const userInput: signupInput = {...user, displayName: user.displayName || user.username }
     const { errors, isValid }: signupValidationOutput = validateSignupInput(userInput)
     // debugging
     console.log("Signup Errors:")

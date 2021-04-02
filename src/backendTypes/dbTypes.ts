@@ -1,4 +1,4 @@
-import { Document, Model, Schema } from "mongoose";
+import { Document, Model, ObjectId, Schema } from "mongoose";
 
 interface UserProps {
     displayName: string
@@ -11,7 +11,7 @@ export interface UserWithPassword extends UserProps {
 }
 
 export interface User extends Readonly<UserProps> {
-    readonly id: number
+    readonly _id: ObjectId
     password?: string
 }
 

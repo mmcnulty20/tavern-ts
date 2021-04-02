@@ -13,7 +13,6 @@ const options:StrategyOptions = {
 const strategyCallback: VerifyCallback = ({ id }: { id: number }, done) => {
     User.findById(id)
         .then(user => {
-            console.log(user)
             if (user) {
                 return done(null, user)
             }
@@ -23,6 +22,6 @@ const strategyCallback: VerifyCallback = ({ id }: { id: number }, done) => {
         )
 }
 
-export default (passport: { use: (arg0: Strategy) => void; }) => {
+export default (passport: { use: (arg0: Strategy) => void; }):void => {
     passport.use(new Strategy(options, strategyCallback ))
 }

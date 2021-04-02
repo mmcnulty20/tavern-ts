@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Request, Router } from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import passport from "passport";
@@ -8,6 +8,7 @@ import User from "../../models/User";
 import validateSignupInput from "../../validations/signup";
 import validateLoginInput from "../../validations/login";
 import { signupInput, signupValidationOutput, userInput, User as UserType } from "../../backendTypes/dbTypes";
+import { UserRequest } from "../../backendTypes/serverTypes";
 
 const router = Router();
 
@@ -21,9 +22,11 @@ router.get("/", (req, res) => {
 // Current user
 router.get("/current",
     passport.authenticate('jwt', { session: false }),
-    ({ body: { user } }, res) => {
-        const { id, username, displayName }: UserType = user
-        res.json({ id, username, displayName });
+    ({ user }, res) => {
+        if ( user ) {
+            const { _id, username, displayName } = user
+            res.json({ _id, username, displayName });
+        }
     }
 )
 
@@ -79,9 +82,9 @@ export default router
 
 
 // login existing user
-router.post("/login", ({ body }, res) => {
+router.post("/login", ({ body: { user } }, res) => {
     // ensure no other keys are being passed further
-    const { username, password }:userInput = body
+    const { username, password }:userInput = user
     const { errors, isValid } = validateLoginInput({ username, password })
 
     if ( !isValid ) return res.status(400).json(errors)
